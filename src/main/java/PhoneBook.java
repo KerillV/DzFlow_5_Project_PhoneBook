@@ -10,4 +10,9 @@ public class PhoneBook {
         }
         return contacts.size();           // Возвращаем общее число записей
     }
+
+    // Создаем метод-заглушку
+    public String findByNumber(String number) {
+        return null;
+    }
 }
