@@ -2,17 +2,18 @@ import java.util.HashMap;
 
 public class PhoneBook {
 
-    private final HashMap<String, String> contacts = new HashMap<>();
+    private final HashMap<String, String> namesToNumbers = new HashMap<>(); // Имя -> Номер
+    private final HashMap<String, String> numbersToNames = new HashMap<>(); // Номер -> Имя
 
     public int add(String name, String number) {
-        if (!contacts.containsKey(name)) { // Проверяем наличие дубликатов имен
-            contacts.put(name, number);   // Если имя новое, добавляем контакт
+        if (!namesToNumbers.containsKey(name)) { // Проверяем наличие имени
+            namesToNumbers.put(name, number); // Добавляем запись в основную карту
+            numbersToNames.put(number, name); // Обновляем карту номеров
         }
-        return contacts.size();           // Возвращаем общее число записей
+        return namesToNumbers.size(); // Возвращаем размер списка контактов
     }
 
-    // Создаем метод-заглушку
     public String findByNumber(String number) {
-        return null;
+        return numbersToNames.get(number); // Получаем имя по номеру
     }
 }
