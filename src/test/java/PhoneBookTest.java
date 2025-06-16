@@ -1,6 +1,7 @@
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
 
 public class PhoneBookTest {
 
@@ -27,5 +28,19 @@ public class PhoneBookTest {
 
         // Assert
         assertEquals("KIRILL", foundName);
+    }
+
+    @Test
+    public void testFindByNameReturns_CorrectNumber() {
+        PhoneBook book = new PhoneBook();
+        book.add("Alice", "+79001234567");
+        assertEquals("+79001234567", book.findByName("Alice"));
+    }
+
+    @Test
+    public void testFindByNonExistingName_ReturnsNull() {
+        PhoneBook book = new PhoneBook();
+        book.add("Alice", "+79001234567");
+        assertNull(book.findByName("Bob")); // Ищем несуществующее имя, вернется null
     }
 }
